@@ -48,7 +48,7 @@ The system follows this **7-step workflow**:
 - Assign each task to the respective agent
 
 6. **Get the outputs**
-- Execute the CrewAI pipeline
+- Execute the CrewAI pipeline using: '*streamlit run app.py*'
 - Display results in clear sections
 
 7. **Deploy using Streamlit**
