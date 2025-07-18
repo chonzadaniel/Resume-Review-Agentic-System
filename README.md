@@ -63,6 +63,7 @@ The system follows this **7-step workflow**:
 - [CrewAI](https://crewai.com/) for agent orchestration
 - [HuggingFace Transformers](https://huggingface.co/docs/transformers) for open-source LLM
 - [SERPER API](https://serper.dev/) for live job search results
+- [OpenAI](https://platform.openai.com/) for agentic system coordination of the created 6 Agents.
 - PyYAML & Requests for config & HTTP
 
 ---
