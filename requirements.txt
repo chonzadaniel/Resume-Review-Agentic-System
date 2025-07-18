@@ -1,0 +1,9 @@
+streamlit
+crewai
+crewai-tools
+pymupdf
+python-docx
+pyyaml
+openai
+PyMuPDF
+PyPDF2
