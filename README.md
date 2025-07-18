@@ -22,11 +22,12 @@ An **agentic system powered by CrewAI and open-source LLMs** that helps job seek
 ---
 
 ## Workflow
+- create the project environment: with `bash: conda create -n 'env_name' python=3.11` followed by the `bash: conda activate 'env_name'`
 
 The system follows this **7-step workflow**:
 
 1. **Setup requirements & environment**
-- Read API keys from `crewai_api_key.yml` and `huggingface_credentials.yml`
+- Read API keys from `crewai_api_key.yml` and `huggingface_credentials.yml`, alternatively using `openai_credentials.yml` for the `gpt-4o`
 - Initialize the open-source LLM (Mistral-7B-Instruct-v0.3 via HuggingFace)
 
 2. **Import important libraries**
