@@ -16,6 +16,12 @@ from openai import OpenAI
 
 # -------------------------------------- Setup requirements — environment & API keys ----------------------------
 def load_api_keys():
+    """
+    Load API keys from local YAML configuration files and set them as environment variables.
+    
+    - Reads `openai_credentials.yml` for OpenAI API key.
+    - Reads `crewai_api_key.yml` (optional) for Serper API key.
+    """
     with open("openai_credentials.yml") as f:
         openai_keys = yaml.safe_load(f)
     os.environ["OPENAI_API_KEY"] = openai_keys.get("OPENAI_API_KEY", "")
@@ -55,6 +61,20 @@ with st.sidebar:
 
 # --------------------------------------- Resume Extraction -----------------------------------------------
 def read_resume(uploaded_file):
+    """
+    Extracts and returns the text content from an uploaded resume file.
+    
+    Supports `.txt`, `.pdf`, and `.docx` file formats.
+    
+    Args:
+        uploaded_file (UploadedFile): File object uploaded via Streamlit file_uploader.
+        
+    Returns:
+        str: Extracted resume text.
+        
+    Raises:
+        ValueError: If the file format is not supported.
+    """
     if uploaded_file.name.endswith(".txt"):
         return uploaded_file.read().decode("utf-8", errors="ignore")
     elif uploaded_file.name.endswith(".pdf"):
@@ -76,6 +96,17 @@ today = datetime.today()
 min_deadline = (today + timedelta(days=3)).strftime('%d %B %Y')
 
 def create_agents_and_tasks(resume_text, professional_field, country):
+    """
+    Creates and configures the agents and tasks for the CrewAI pipeline.
+    
+    Args:
+        resume_text (str): Text content of the uploaded resume.
+        professional_field (str): User's professional field of interest.
+        country (str): Target country for job search.
+        
+    Returns:
+        tuple: A tuple of (agents list, tasks list) ready for Crew instantiation.
+    """
     resume_feedback = Agent(
         name="Resume Feedback Agent",
         role="Professional Resume Reviewer",
